@@ -1,1 +1,17 @@
-{"name":"wearable-trial-custody","version":"0.1.0","private":true,"type":"module","scripts":{"check":"tsc --noEmit","test":"npm run check"},"devDependencies":{"typescript":"5.9.2"}}
+{
+  "name": "wearable-trial-custody",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "build": "tsc",
+    "build:fixtures": "tsc && node dist/scripts/build-fixtures.js",
+    "demo": "tsc && node dist/src/demo.js",
+    "test": "tsc && node --test dist/test/ledger.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "5.9.2"
+  }
+}

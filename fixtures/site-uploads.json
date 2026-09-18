@@ -1,1 +1,341 @@
-{"studyId":"study-r19","events":[{"kind":"issue","siteId":"site-a","subjectCode":"A-014","serialNumber":"watch-100"},{"kind":"replace","siteId":"site-b","subjectCode":"A-014","serialNumber":"watch-205","replacesSerialNumber":"watch-100"}],"packages":[{"packageId":"pkg-1","serialNumber":"watch-100","contentSha256":"aaa111"},{"packageId":"pkg-1-retry","serialNumber":"watch-100","contentSha256":"aaa111"},{"packageId":"pkg-2","serialNumber":"watch-100","contentSha256":"bbb222","overlaps":"pkg-1"}]}
+{
+  "studyId": "study-r19",
+  "generatedBy": "scripts/build-fixtures.ts",
+  "note": "脱敏演示夹具；设备私钥为确定性测试密钥，随机分组为密封演示信封",
+  "study": {
+    "studyId": "study-r19",
+    "title": "R19 腕戴睡眠与活动量研究",
+    "firmwareAllowlist": [
+      "firmware-2.1.0",
+      "firmware-3.0.0"
+    ],
+    "siteIds": [
+      "site-a",
+      "site-b"
+    ]
+  },
+  "users": [
+    {
+      "userId": "dm-zhang",
+      "role": "data-manager"
+    },
+    {
+      "userId": "mon-li",
+      "role": "medical-monitor"
+    },
+    {
+      "userId": "sitea-wang",
+      "role": "site-user",
+      "siteId": "site-a"
+    },
+    {
+      "userId": "siteb-chen",
+      "role": "site-user",
+      "siteId": "site-b"
+    },
+    {
+      "userId": "ub-lead",
+      "role": "unblinded-user"
+    },
+    {
+      "userId": "ub-confirm",
+      "role": "unblinded-user"
+    }
+  ],
+  "subjects": [
+    {
+      "subjectCode": "A-014",
+      "homeSiteId": "site-a"
+    },
+    {
+      "subjectCode": "A-027",
+      "homeSiteId": "site-a"
+    }
+  ],
+  "visits": [
+    {
+      "visitId": "v-a14-enroll",
+      "subjectCode": "A-014",
+      "siteId": "site-a",
+      "plannedFrom": "2026-07-31T00:00:00Z",
+      "plannedTo": "2026-08-04T00:00:00Z",
+      "occurredAt": "2026-08-01T08:00:00Z"
+    },
+    {
+      "visitId": "v-a14-switch",
+      "subjectCode": "A-014",
+      "siteId": "site-b",
+      "plannedFrom": "2026-08-09T00:00:00Z",
+      "plannedTo": "2026-08-12T00:00:00Z",
+      "occurredAt": "2026-08-10T10:00:00Z"
+    },
+    {
+      "visitId": "v-a14-followup",
+      "subjectCode": "A-014",
+      "siteId": "site-b",
+      "plannedFrom": "2026-09-04T00:00:00Z",
+      "plannedTo": "2026-09-08T00:00:00Z",
+      "occurredAt": "2026-09-06T09:00:00Z"
+    },
+    {
+      "visitId": "v-a27-enroll",
+      "subjectCode": "A-027",
+      "siteId": "site-a",
+      "plannedFrom": "2026-07-14T00:00:00Z",
+      "plannedTo": "2026-07-17T00:00:00Z",
+      "occurredAt": "2026-07-15T09:00:00Z"
+    },
+    {
+      "visitId": "v-a27-reissue",
+      "subjectCode": "A-027",
+      "siteId": "site-a",
+      "plannedFrom": "2026-07-20T00:00:00Z",
+      "plannedTo": "2026-07-23T00:00:00Z",
+      "occurredAt": "2026-07-21T11:00:00Z"
+    }
+  ],
+  "devices": [
+    {
+      "serialNumber": "watch-100",
+      "label": "研究用腕戴 watch-100（固件世代 2.x）",
+      "publicKey": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "fVoRNO6OLfD-ruNoBTGGwiyfEkrOnGf9s-EWOjh6Jdk"
+      },
+      "keyPairJwk": {
+        "crv": "Ed25519",
+        "d": "cIeAFLucHS7eCZJJm5HY_dPMcOj6LV8jwB0Txqd8ErI",
+        "x": "fVoRNO6OLfD-ruNoBTGGwiyfEkrOnGf9s-EWOjh6Jdk",
+        "kty": "OKP"
+      }
+    },
+    {
+      "serialNumber": "watch-101",
+      "label": "研究用腕戴 watch-101（固件世代 2.x）",
+      "publicKey": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "lUPMBv3gYbvGzo_IYdyTAtscBGGwqHUS8WhqVU8XeAg"
+      },
+      "keyPairJwk": {
+        "crv": "Ed25519",
+        "d": "k4x_ZGoB8AbnzaNIsyX2rgitfF0lAJROQNxBQUdzZ_c",
+        "x": "lUPMBv3gYbvGzo_IYdyTAtscBGGwqHUS8WhqVU8XeAg",
+        "kty": "OKP"
+      }
+    },
+    {
+      "serialNumber": "watch-102",
+      "label": "研究用腕戴 watch-102（固件世代 2.x）",
+      "publicKey": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "cuwa5i-h03BnI931HyxTrMEmm-Xow-kSX2B1oIUawe0"
+      },
+      "keyPairJwk": {
+        "crv": "Ed25519",
+        "d": "WSOg4s0GVikvhcB9eWjdoaSNsOAQlbBczV-Vnd-WHk8",
+        "x": "cuwa5i-h03BnI931HyxTrMEmm-Xow-kSX2B1oIUawe0",
+        "kty": "OKP"
+      }
+    },
+    {
+      "serialNumber": "watch-205",
+      "label": "研究用腕戴 watch-205（固件世代 3.x）",
+      "publicKey": {
+        "kty": "OKP",
+        "crv": "Ed25519",
+        "x": "WxQkIMFKTByrpvRB3EFpehoR5Gg86FUeWRyVK54FDHQ"
+      },
+      "keyPairJwk": {
+        "crv": "Ed25519",
+        "d": "pVL3hWFllTNstyV3dteaVJdlwz2kloF8u7IryTGhf8Y",
+        "x": "WxQkIMFKTByrpvRB3EFpehoR5Gg86FUeWRyVK54FDHQ",
+        "kty": "OKP"
+      }
+    }
+  ],
+  "randomization": {
+    "A-014": "arm-B",
+    "A-027": "arm-A"
+  },
+  "events": [
+    {
+      "action": "issue",
+      "siteId": "site-a",
+      "subjectCode": "A-014",
+      "serialNumber": "watch-100",
+      "occurredAt": "2026-08-01T08:00:00Z",
+      "visitId": "v-a14-enroll"
+    },
+    {
+      "action": "replace",
+      "siteId": "site-b",
+      "subjectCode": "A-014",
+      "serialNumber": "watch-205",
+      "replacesSerialNumber": "watch-100",
+      "occurredAt": "2026-08-10T10:00:00Z",
+      "visitId": "v-a14-switch"
+    },
+    {
+      "action": "issue",
+      "siteId": "site-a",
+      "subjectCode": "A-027",
+      "serialNumber": "watch-101",
+      "occurredAt": "2026-07-15T09:00:00Z",
+      "visitId": "v-a27-enroll"
+    },
+    {
+      "action": "lost",
+      "siteId": "site-a",
+      "subjectCode": "A-027",
+      "serialNumber": "watch-101",
+      "occurredAt": "2026-07-20T18:00:00Z"
+    },
+    {
+      "action": "replace",
+      "siteId": "site-a",
+      "subjectCode": "A-027",
+      "serialNumber": "watch-102",
+      "replacesSerialNumber": "watch-101",
+      "occurredAt": "2026-07-21T11:00:00Z",
+      "visitId": "v-a27-reissue"
+    }
+  ],
+  "packages": [
+    {
+      "packageId": "pkg-1",
+      "siteId": "site-a",
+      "serialNumber": "watch-100",
+      "capturedFrom": "2026-08-01T09:00:00Z",
+      "capturedTo": "2026-08-03T09:00:00Z",
+      "firmwareVersion": "firmware-2.1.0",
+      "contentSha256": "aaa111",
+      "signature": "+sjfePnH2PpJYRLa7702e7MgJY3v7pcddO/hnqM/ZqZvWIWaI7x2TGNd1QK8YlaZNMyaIag87GxRpD088D/BCw==",
+      "visitId": "v-a14-enroll"
+    },
+    {
+      "packageId": "pkg-1-retry",
+      "siteId": "site-a",
+      "serialNumber": "watch-100",
+      "capturedFrom": "2026-08-01T09:00:00Z",
+      "capturedTo": "2026-08-03T09:00:00Z",
+      "firmwareVersion": "firmware-2.1.0",
+      "contentSha256": "aaa111",
+      "signature": "WkyzQOotQhFVbIGU8m9MOuAG52tuTaC34dWadTd236X8uALA6Z9PMTAVS+kjUC9FNBy2QS9evP6t5nGtBGX5Cw==",
+      "visitId": "v-a14-enroll"
+    },
+    {
+      "packageId": "pkg-2",
+      "siteId": "site-a",
+      "serialNumber": "watch-100",
+      "capturedFrom": "2026-08-01T09:00:00Z",
+      "capturedTo": "2026-08-03T09:00:00Z",
+      "firmwareVersion": "firmware-2.1.0",
+      "contentSha256": "bbb222",
+      "signature": "uo/EFcw6z81KF8vy0WP9lAjZ2/STEyn6fnN/WwJ7FQk93bpYfF/W/EJZMwU1bvW+nKVkwwQfOt4BGdZOah1YAQ==",
+      "visitId": "v-a14-enroll"
+    },
+    {
+      "packageId": "pkg-1-badfw",
+      "siteId": "site-a",
+      "serialNumber": "watch-100",
+      "capturedFrom": "2026-08-01T09:00:00Z",
+      "capturedTo": "2026-08-02T09:00:00Z",
+      "firmwareVersion": "firmware-9.9.9",
+      "contentSha256": "e62fe2af999d38401168af3e846ef3aa981c8eeb857174624b13c14dafc78dc4",
+      "signature": "gDWqRYlscMbd6kmP1y/X9QqSXZDjVjNSWwkfmoZIwu2sDz/fAoTIEWm2H0ASHrxpRjSRcCPE08Gq3TVvwGXyAQ==",
+      "payload": "watch-100|2026-08-02|unsupported-firmware-demo"
+    },
+    {
+      "packageId": "pkg-1-badsig",
+      "siteId": "site-a",
+      "serialNumber": "watch-100",
+      "capturedFrom": "2026-08-02T09:00:00Z",
+      "capturedTo": "2026-08-03T09:00:00Z",
+      "firmwareVersion": "firmware-2.1.0",
+      "contentSha256": "7e7e7e7e",
+      "signature": "ZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZg=="
+    },
+    {
+      "packageId": "pkg-1-baddigest",
+      "siteId": "site-a",
+      "serialNumber": "watch-100",
+      "capturedFrom": "2026-08-03T09:00:00Z",
+      "capturedTo": "2026-08-04T09:00:00Z",
+      "firmwareVersion": "firmware-2.1.0",
+      "contentSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "signature": "l2XfmjvnpW07MhitOMY8WgSJtE/MA5xuHjUmJq0UzG5l5YpxxyhmRpNj9qI0JAXmngsYfVQFgAjMXTk7Zs8ZCg==",
+      "payload": "watch-100|2026-08-04|actual-payload-differs-from-claimed-digest"
+    },
+    {
+      "packageId": "pkg-1-corr",
+      "siteId": "site-a",
+      "serialNumber": "watch-100",
+      "capturedFrom": "2026-08-01T09:05:00Z",
+      "capturedTo": "2026-08-03T08:55:00Z",
+      "firmwareVersion": "firmware-2.1.0",
+      "contentSha256": "ccc333",
+      "signature": "8kqe/kA1C2n5I750yD21YdRJ0yqQaaDjH7mevSmAM5724sutI/mUPm5jo2SUE4Mz8uC0Opfsp8I7kRbMa0jxDg==",
+      "visitId": "v-a14-enroll",
+      "correctsPackageId": "pkg-1",
+      "correctionReason": "设备时钟漂移 5 分钟，按站点日志重新导出校正数据，原包保留以备稽查"
+    },
+    {
+      "packageId": "pkg-3",
+      "siteId": "site-b",
+      "serialNumber": "watch-205",
+      "capturedFrom": "2026-08-11T08:00:00Z",
+      "capturedTo": "2026-08-13T08:00:00Z",
+      "firmwareVersion": "firmware-3.0.0",
+      "contentSha256": "ddd444",
+      "signature": "rjFBuo1AFujpB7gDfsRhDAfCh8Kkk9hI5K65tvKZL+xFGnnWGZjvQJ21Xt//f6Pn2lLPxKASjnMmVodIVBCgCA==",
+      "visitId": "v-a14-switch"
+    },
+    {
+      "packageId": "pkg-5",
+      "siteId": "site-a",
+      "serialNumber": "watch-101",
+      "capturedFrom": "2026-07-16T08:00:00Z",
+      "capturedTo": "2026-07-18T08:00:00Z",
+      "firmwareVersion": "firmware-2.1.0",
+      "contentSha256": "eee555",
+      "signature": "1kN1I+BkZ2riulnkgdEQNUL7r+rcjbT2DtRdwmollivwiCXM6FrlhqD13XYSFfXCDiLYUcoc7S3906sQnquQAA==",
+      "visitId": "v-a27-enroll"
+    },
+    {
+      "packageId": "pkg-6",
+      "siteId": "site-a",
+      "serialNumber": "watch-102",
+      "capturedFrom": "2026-07-22T08:00:00Z",
+      "capturedTo": "2026-07-24T08:00:00Z",
+      "firmwareVersion": "firmware-3.0.0",
+      "contentSha256": "fff666",
+      "signature": "bU4utfjOt0dMYS3X85f7lKjcRUFJZt4lkH0cczA84etMrDTlWuv0TC4RDp9Uws8ulGNuNKkiYXREuoPmEi+pAQ==",
+      "visitId": "v-a27-reissue"
+    },
+    {
+      "packageId": "pkg-4",
+      "siteId": "site-b",
+      "serialNumber": "watch-205",
+      "capturedFrom": "2026-09-05T08:00:00Z",
+      "capturedTo": "2026-09-07T08:00:00Z",
+      "firmwareVersion": "firmware-3.0.0",
+      "contentSha256": "999aaa",
+      "signature": "yu+PhiUnYdAIWBcYXc1tnSBB92/VYB8fXjKTIg3HPUNA7dzBYRu3cmtYa+No2e5/802HRNUsxwE8VItW5NqjDQ==",
+      "visitId": "v-a14-followup"
+    },
+    {
+      "packageId": "pkg-4b",
+      "siteId": "site-b",
+      "serialNumber": "watch-205",
+      "capturedFrom": "2026-09-05T08:00:00Z",
+      "capturedTo": "2026-09-07T08:00:00Z",
+      "firmwareVersion": "firmware-3.0.0",
+      "contentSha256": "999bbb",
+      "signature": "T+cgfOuyJPXwbxHKKu961KiUFtbXWGYLjiG07KnyxH3tYh5IYZHgtqyFOeMxlzPhSrAOkzYx0AdZBlrZwto7Cg==",
+      "visitId": "v-a14-followup"
+    }
+  ]
+}
