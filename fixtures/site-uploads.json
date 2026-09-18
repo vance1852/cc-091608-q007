@@ -1,1 +1,498 @@
-{"studyId":"study-r19","events":[{"kind":"issue","siteId":"site-a","subjectCode":"A-014","serialNumber":"watch-100"},{"kind":"replace","siteId":"site-b","subjectCode":"A-014","serialNumber":"watch-205","replacesSerialNumber":"watch-100"}],"packages":[{"packageId":"pkg-1","serialNumber":"watch-100","contentSha256":"aaa111"},{"packageId":"pkg-1-retry","serialNumber":"watch-100","contentSha256":"aaa111"},{"packageId":"pkg-2","serialNumber":"watch-100","contentSha256":"bbb222","overlaps":"pkg-1"}]}
+{
+  "schemaVersion": 2,
+  "study": {
+    "studyId": "study-r19",
+    "allowedFirmware": [
+      "fw-2.4.1",
+      "fw-3.1.0"
+    ]
+  },
+  "users": [
+    {
+      "userId": "u-sitea",
+      "displayName": "站点A协调员",
+      "role": "site-user",
+      "siteId": "site-a"
+    },
+    {
+      "userId": "u-siteb",
+      "displayName": "站点B协调员",
+      "role": "site-user",
+      "siteId": "site-b"
+    },
+    {
+      "userId": "u-sitec",
+      "displayName": "站点C协调员",
+      "role": "site-user",
+      "siteId": "site-c"
+    },
+    {
+      "userId": "u-monitor",
+      "displayName": "医学监查员",
+      "role": "medical-monitor"
+    },
+    {
+      "userId": "u-dm",
+      "displayName": "数据经理",
+      "role": "data-manager"
+    },
+    {
+      "userId": "u-auditor",
+      "displayName": "独立稽查员",
+      "role": "auditor"
+    },
+    {
+      "userId": "u-unblinder-a",
+      "displayName": "解盲授权人甲",
+      "role": "data-manager",
+      "permissions": [
+        "UNBLIND"
+      ]
+    },
+    {
+      "userId": "u-unblinder-b",
+      "displayName": "解盲授权人乙",
+      "role": "medical-monitor",
+      "permissions": [
+        "UNBLIND"
+      ]
+    }
+  ],
+  "devices": [
+    {
+      "serialNumber": "watch-100",
+      "keyId": "key-watch-100",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAOjR8IRy7NaQMjfiQhEkFpjh4iDYCVBBr0twy+nO6c2o=\n-----END PUBLIC KEY-----\n",
+      "registeredAt": "2026-02-20T00:00:00.000Z"
+    },
+    {
+      "serialNumber": "watch-205",
+      "keyId": "key-watch-205",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAoYWsH4vivG4FTNO/P7xXX+qG3jWu8zsBQyQ8uaZK+t4=\n-----END PUBLIC KEY-----\n",
+      "registeredAt": "2026-02-20T00:00:00.000Z"
+    },
+    {
+      "serialNumber": "watch-310",
+      "keyId": "key-watch-310",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAwyuIPDgpu9Ly1WvJpeHaPI/5X8OvVOcjXrGiXOfznbs=\n-----END PUBLIC KEY-----\n",
+      "registeredAt": "2026-02-20T00:00:00.000Z"
+    },
+    {
+      "serialNumber": "watch-311",
+      "keyId": "key-watch-311",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAurOc+4lKUIN+oX9Fx8wydafQr+enOyVDcpYIEmmjU9Q=\n-----END PUBLIC KEY-----\n",
+      "registeredAt": "2026-02-20T00:00:00.000Z"
+    }
+  ],
+  "steps": [
+    {
+      "op": "custody",
+      "by": "u-sitea",
+      "eventId": "evt-001",
+      "siteId": "site-a",
+      "subjectCode": "A-014",
+      "serialNumber": "watch-100",
+      "action": "issue",
+      "occurredAt": "2026-03-01T08:00:00.000Z"
+    },
+    {
+      "op": "custody",
+      "by": "u-sitea",
+      "eventId": "evt-002",
+      "siteId": "site-a",
+      "subjectCode": "B-027",
+      "serialNumber": "watch-310",
+      "action": "issue",
+      "occurredAt": "2026-03-05T08:00:00.000Z"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "accepted",
+      "note": "A-014 首访原始包",
+      "manifest": {
+        "packageId": "pkg-a014-d1",
+        "siteId": "site-a",
+        "serialNumber": "watch-100",
+        "capturedFrom": "2026-03-01T12:00:00.000Z",
+        "capturedTo": "2026-03-02T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "29005fc5ce6ae4f1c42e8fda5cc8c79deb0e93a3be534ac4fd0d13cd955c19af",
+        "signature": "06c95e66cdd3517ef66300773a0253f3021f184d0f4daa23d4bc968dc629ccbbbec9fce95a6b86ff51b9781be2ea2a00c4954901bfdb230c906d3a5803969a0e"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-100|window=2026-03-01..03-02|seq=0001\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "duplicate",
+      "note": "站点重复提交：完全相同的包（不同包号）",
+      "manifest": {
+        "packageId": "pkg-a014-d1-resubmit",
+        "siteId": "site-a",
+        "serialNumber": "watch-100",
+        "capturedFrom": "2026-03-01T12:00:00.000Z",
+        "capturedTo": "2026-03-02T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "29005fc5ce6ae4f1c42e8fda5cc8c79deb0e93a3be534ac4fd0d13cd955c19af",
+        "signature": "1436b159d4212d16792651c54c7cecba8a10833d2f6f9fb6ff98fe1ac2f15b951239aed49312bfe0e79ba4e2bd8f1bb4b24ed842827ed039e4bd387277f7940a"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-100|window=2026-03-01..03-02|seq=0001\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "quarantined",
+      "note": "同区间异内容：声明同一采集区间但数据不同，隔离",
+      "manifest": {
+        "packageId": "pkg-a014-d1-alt",
+        "siteId": "site-a",
+        "serialNumber": "watch-100",
+        "capturedFrom": "2026-03-01T12:00:00.000Z",
+        "capturedTo": "2026-03-02T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "4b340a22b92f804ce5ed119c912e603ddd3b951b88f3fdc7847f65eb759faf4d",
+        "signature": "833cb7ed2a0af96d1589fa471a9dbf065d02956504c9d4607ebce3cf19218b3242078e3821deeae84186aca2002098f4e123012f028edec22954d66ca4f6ac0d"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-100|window=2026-03-01..03-02|seq=0099\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "rejected:DIGEST_MISMATCH",
+      "note": "传输后被改动：摘要与实际字节不符",
+      "manifest": {
+        "packageId": "pkg-a014-d1-tampered",
+        "siteId": "site-a",
+        "serialNumber": "watch-100",
+        "capturedFrom": "2026-03-02T12:00:00.000Z",
+        "capturedTo": "2026-03-03T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "29005fc5ce6ae4f1c42e8fda5cc8c79deb0e93a3be534ac4fd0d13cd955c19af",
+        "signature": "bdb53a3c6bbbb6965c66909400a84c3eedad1dc7a2d520d2b5ab013c21d68476b8f3a3920fa3034b5b2dd03ea8248ddafe64363e8b5df086e070c9e559606107"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-100|window=2026-03-01..03-02|seq=0001\nTAMPERED\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "rejected:BAD_SIGNATURE",
+      "note": "非本机签名：用 watch-205 的私钥签 watch-100 的包",
+      "manifest": {
+        "packageId": "pkg-a014-d1-foreignsig",
+        "siteId": "site-a",
+        "serialNumber": "watch-100",
+        "capturedFrom": "2026-03-03T12:00:00.000Z",
+        "capturedTo": "2026-03-04T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "4e42a530c9dfefc90b0352f665dea80028f1866595c0f425c9d7a7f46645a662",
+        "signature": "63eae59f0874d91977d1fd472babf63dd51f46f0f66f3717d5fcb489db784b9a510cde84571b6c15738cf572c23efd677d2dd49be37bae8f92611a9f9b1cf305"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-100|window=2026-03-03..03-04|seq=0002\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "rejected:FIRMWARE_NOT_LICENSED",
+      "note": "未获研究许可的固件版本",
+      "manifest": {
+        "packageId": "pkg-a014-d1-badfw",
+        "siteId": "site-a",
+        "serialNumber": "watch-100",
+        "capturedFrom": "2026-03-04T12:00:00.000Z",
+        "capturedTo": "2026-03-05T12:00:00.000Z",
+        "firmwareVersion": "fw-0.0.9-beta",
+        "contentSha256": "ae90fc80027175684e84d5b15d92c2d61a9cf7ad250ab1b885061ac1135f2395",
+        "signature": "64bb8d9067254da77066ef03516dfb750cabe075f9a0e34f24daf7c08d9a9a3157d1c24de6b28941d1fec79c2c65842128c73e878a3defa652b0068d020c4402"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-100|window=2026-03-04..03-05|seq=0003\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "rejected:BAD_INTERVAL",
+      "note": "采集区间起止颠倒",
+      "manifest": {
+        "packageId": "pkg-a014-d1-badinterval",
+        "siteId": "site-a",
+        "serialNumber": "watch-100",
+        "capturedFrom": "2026-03-06T12:00:00.000Z",
+        "capturedTo": "2026-03-05T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "a6689885f33c725c6b37172bba2731ee3b33d32d02d97110faf331bb7cd13d1d",
+        "signature": "1f1207d5d588905fdc47029af3a1cc766b51891baa5ad04a960e21e7a1e016bde76b4f88e0fbb8ba54362a89b2f21fcc59a52fa1c403e1494febff7b10d4a20c"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-100|window=reversed|seq=0004\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "accepted",
+      "note": "B-027 随访包",
+      "manifest": {
+        "packageId": "pkg-b027-d1",
+        "siteId": "site-a",
+        "serialNumber": "watch-310",
+        "capturedFrom": "2026-03-06T12:00:00.000Z",
+        "capturedTo": "2026-03-07T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "a679b408051882e9c9e1a334bbe46583ae50bdd66453a8f579cbac6483cb18f2",
+        "signature": "773767591f3356b6df7aca64eb3d4da385d4e00efdca667b873b491ed04680faec8d9bcb6df2a852d776b965635f77692ee583166cf0af37cbdba099447d8d0b"
+      },
+      "payloadText": "wearable-export/v1\nsubject=B-027|serial=watch-310|window=2026-03-06..03-07|seq=0001\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "duplicate",
+      "note": "重复提交批次中的第二份",
+      "manifest": {
+        "packageId": "pkg-b027-d1-copy",
+        "siteId": "site-a",
+        "serialNumber": "watch-310",
+        "capturedFrom": "2026-03-06T12:00:00.000Z",
+        "capturedTo": "2026-03-07T12:00:00.000Z",
+        "firmwareVersion": "fw-2.4.1",
+        "contentSha256": "a679b408051882e9c9e1a334bbe46583ae50bdd66453a8f579cbac6483cb18f2",
+        "signature": "d6a02996835df63cc19e88062fb28d397973132cf0660b56192bf5bed84be87d590dd92cbc1bbe6c94d039e7611cf4a1c50d4698df9c247fbf6cda6603993405"
+      },
+      "payloadText": "wearable-export/v1\nsubject=B-027|serial=watch-310|window=2026-03-06..03-07|seq=0001\n"
+    },
+    {
+      "op": "custody",
+      "by": "u-sitea",
+      "eventId": "evt-003",
+      "siteId": "site-a",
+      "subjectCode": "B-027",
+      "serialNumber": "watch-310",
+      "action": "lost",
+      "occurredAt": "2026-03-08T08:00:00.000Z"
+    },
+    {
+      "op": "custody",
+      "by": "u-sitea",
+      "eventId": "evt-004",
+      "siteId": "site-a",
+      "subjectCode": "B-027",
+      "serialNumber": "watch-311",
+      "action": "issue",
+      "occurredAt": "2026-03-09T08:00:00.000Z"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "accepted",
+      "note": "补发设备 watch-311 的首批数据",
+      "manifest": {
+        "packageId": "pkg-b027-d2",
+        "siteId": "site-a",
+        "serialNumber": "watch-311",
+        "capturedFrom": "2026-03-09T12:00:00.000Z",
+        "capturedTo": "2026-03-10T12:00:00.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "de7f36b19bade77aa5f9b3b403504268beb7a5680eea0effd29d17761efd3d03",
+        "signature": "e6bacbb8e6964da0e16a9fdeb41f48c0c4669c29ee9c9fef20a3cfe3e6c7d71181b079e363347dede59a5b1aaeffae0d54a108eaaed3c7476338d47ba1761703"
+      },
+      "payloadText": "wearable-export/v1\nsubject=B-027|serial=watch-311|window=2026-03-09..03-10|seq=0001\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-siteb",
+      "expect": "rejected:OUTSIDE_CUSTODY",
+      "note": "换机尚未登记：watch-205 的采集区间无占有窗口支撑",
+      "manifest": {
+        "packageId": "pkg-a014-w205-early",
+        "siteId": "site-b",
+        "serialNumber": "watch-205",
+        "capturedFrom": "2026-03-05T12:00:00.000Z",
+        "capturedTo": "2026-03-06T12:00:00.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "112e80c048d61d54bd5bf03b9c68dab539d5be0b969844256728b6fd5146007f",
+        "signature": "cf47e3394d2627b78fb597d93cdb83b1a669730da9f9e051042790f7a752f60732e46c67984ef71f06bea6f343b18a005521696f4532d61f183aeac0b0848b05"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-205|window=2026-03-05..03-06|seq=0001\n"
+    },
+    {
+      "op": "custody",
+      "by": "u-siteb",
+      "eventId": "evt-005",
+      "siteId": "site-b",
+      "subjectCode": "A-014",
+      "serialNumber": "watch-205",
+      "action": "replace",
+      "replacesSerialNumber": "watch-100",
+      "occurredAt": "2026-03-10T09:00:00.000Z"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitec",
+      "expect": "rejected:WRONG_SITE",
+      "note": "无关站点 site-c 冒充提交 A-014 的换机数据",
+      "manifest": {
+        "packageId": "pkg-a014-w205-sitec",
+        "siteId": "site-c",
+        "serialNumber": "watch-205",
+        "capturedFrom": "2026-03-11T12:00:00.000Z",
+        "capturedTo": "2026-03-12T12:00:00.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "48a4400bac8a4692709f7b5f728005be0437aa815037a53edbe0bae97003e3f5",
+        "signature": "35e9eb071265db34e3b35d0ff510416e6c49a635c911974c0081b4065ec087be70102b8d6b6791889d6ba73d71cdcebb1e24c3b186838e3484d5d6dfd73f0d01"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-205|window=2026-03-11..03-12|seq=0001|from=c\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-siteb",
+      "expect": "accepted",
+      "note": "换机后 watch-205 首批数据（不同固件 fw-3.1.0）",
+      "manifest": {
+        "packageId": "pkg-a014-w205-d1",
+        "siteId": "site-b",
+        "serialNumber": "watch-205",
+        "capturedFrom": "2026-03-11T12:00:00.000Z",
+        "capturedTo": "2026-03-12T12:00:00.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "85f1341f71c9289c07a4d17bec59a1c4e7147dc30c0f9e5bec41394b406b62b8",
+        "signature": "cf1605e4bb6b3c87d6f4487403ab17c40bd9a1bd6d1f522420c275b0b4b68624da852fa282373557d182840d1f510109aab57d4568835da05830d8008f1eda0b"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-205|window=2026-03-11..03-12|seq=0001\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-siteb",
+      "expect": "accepted",
+      "note": "校正包：不覆盖原包，以原因建立替代关系（时间戳漂移重导出）",
+      "manifest": {
+        "packageId": "pkg-a014-w205-d1-corr",
+        "siteId": "site-b",
+        "serialNumber": "watch-205",
+        "capturedFrom": "2026-03-11T12:00:37.000Z",
+        "capturedTo": "2026-03-12T12:00:37.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "56eb5d873a9a4a9ece15a9032924d5171adeb758299840ad7574e0cc1c332d9c",
+        "signature": "7db591a35a8e42562c7bf55bde706e49ee83a3e68e05552b753fe5eb024e2b276e18ee20eae0ce89f0aed6798f1c12cdb2781b9d66d7725b29bf18348fd54d0c",
+        "correctsPackageId": "pkg-a014-w205-d1",
+        "correctionReason": "设备时间戳整体漂移 +37 秒，按 SOP-WEAR-07 以平台时钟对齐后重新导出"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-205|window=2026-03-11..03-12|seq=0001|realigned=-37s\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-siteb",
+      "expect": "rejected:UNKNOWN_CORRECTION_TARGET",
+      "note": "校正目标包不存在",
+      "manifest": {
+        "packageId": "pkg-a014-corr-ghost",
+        "siteId": "site-b",
+        "serialNumber": "watch-205",
+        "capturedFrom": "2026-03-12T12:00:00.000Z",
+        "capturedTo": "2026-03-13T12:00:00.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "3e79794c248cc6c646fea559fdffbdde40e6f286bd080e079c70643b24d7cc8c",
+        "signature": "ccccef12899d9012ef3ec4b395d1086d4bdfcccf110dd196f8ab53dec7e37e6b346aee7bb0a19d4ec0ac7f7b328ed9ffe9300e05068ae88ccccea86673d78007",
+        "correctsPackageId": "pkg-never-existed",
+        "correctionReason": "试图校正一个系统中不存在的包"
+      },
+      "payloadText": "wearable-export/v1\nsubject=A-014|serial=watch-205|window=2026-03-12..03-13|seq=ghost\n"
+    },
+    {
+      "op": "upload",
+      "by": "u-siteb",
+      "expect": "rejected:UNKNOWN_DEVICE",
+      "note": "未登记设备序列号",
+      "manifest": {
+        "packageId": "pkg-unknown-device",
+        "siteId": "site-b",
+        "serialNumber": "watch-999",
+        "capturedFrom": "2026-03-12T12:00:00.000Z",
+        "capturedTo": "2026-03-13T12:00:00.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "abba3eae68f581da39da4f3a3d44f11c106a41312bee9cefc2bfa797b6cf65ee",
+        "signature": "7d8897c39153f4dfc802b782857e1a4bdb18010f7a09a93af044fda336a46f7fe01a17b0c77e3cd4ef2d0deee3bfdd417a8c528c1553e6f87384a5a65003ff0d"
+      },
+      "payloadText": "wearable-export/v1\nsubject=X|serial=watch-999|window=2026-03-12..03-13\n"
+    },
+    {
+      "op": "adjudicate",
+      "by": "u-monitor",
+      "packageId": "pkg-a014-d1-alt",
+      "decision": "excluded",
+      "reason": "站点无法提供该副本的设备原始导出凭证，与已接收包区间冲突，按 DMP 第 9.2 条排除"
+    },
+    {
+      "op": "resolveGap",
+      "by": "u-monitor",
+      "subjectSerial": "watch-310",
+      "resolution": "watch-310 遗失已备案，申办方于 2026-03-09 补发 watch-311，中断区间无采集数据可恢复"
+    },
+    {
+      "op": "freeze",
+      "by": "u-dm",
+      "datasetId": "ds-2026-03-15"
+    },
+    {
+      "op": "upload",
+      "by": "u-sitea",
+      "expect": "accepted",
+      "note": "锁库后抵达的随访包，进入修订版 2",
+      "manifest": {
+        "packageId": "pkg-b027-d3",
+        "siteId": "site-a",
+        "serialNumber": "watch-311",
+        "capturedFrom": "2026-03-12T12:00:00.000Z",
+        "capturedTo": "2026-03-13T12:00:00.000Z",
+        "firmwareVersion": "fw-3.1.0",
+        "contentSha256": "d86d4c6cdda8ed266545f3d6a7ec96108df1b2bb98d4881e32c80e6316bf082d",
+        "signature": "35278a352a3a11367d2a9ddb6147469c51306f3a6b481bc80f0dcbe5dd577c52500b2548be80534c1e3ff0a27d67c89a2b6ef5315be25caf66917749e92efa0f"
+      },
+      "payloadText": "wearable-export/v1\nsubject=B-027|serial=watch-311|window=2026-03-12..03-13|seq=0002\n"
+    },
+    {
+      "op": "freeze",
+      "by": "u-dm",
+      "datasetId": "ds-2026-03-20"
+    },
+    {
+      "op": "custody",
+      "by": "u-sitea",
+      "eventId": "evt-006",
+      "siteId": "site-a",
+      "subjectCode": "B-027",
+      "serialNumber": "watch-311",
+      "action": "return",
+      "occurredAt": "2026-03-21T10:00:00.000Z"
+    },
+    {
+      "op": "unblind",
+      "requester": "u-monitor",
+      "confirmer": "u-dm",
+      "subjectCode": "A-014",
+      "reason": "监查员试图查看分组",
+      "expect": "denied:REQUESTER_NOT_AUTHORIZED"
+    },
+    {
+      "op": "unblind",
+      "requester": "u-unblinder-a",
+      "confirmer": "u-unblinder-a",
+      "subjectCode": "A-014",
+      "reason": "同一人兼任请求与确认",
+      "expect": "denied:SAME_USER"
+    },
+    {
+      "op": "unblind",
+      "requester": "u-unblinder-a",
+      "confirmer": "u-sitea",
+      "subjectCode": "A-014",
+      "reason": "确认人不具备授权",
+      "expect": "denied:CONFIRMER_NOT_AUTHORIZED"
+    },
+    {
+      "op": "unblind",
+      "requester": "u-unblinder-a",
+      "confirmer": "u-unblinder-b",
+      "subjectCode": "A-014",
+      "reason": "SAE 急救需获知治疗分组（24h 内补交书面报告）",
+      "expect": "revealed"
+    }
+  ]
+}

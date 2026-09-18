@@ -5,6 +5,7 @@ node_modules/
 .venv/
 venv/
 dist/
+reports/
 build/
 coverage/
 __pycache__/
